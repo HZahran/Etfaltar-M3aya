@@ -17,6 +17,10 @@ public class PlayerControls : MonoBehaviour {
 	static int killed;
 	static int missed;
 
+	public float damage;
+	public float range;
+	public Camera fpsCam;
+
 	// Use this for initialization
 	void Start () {
 		weaponOne = weapon1;
@@ -26,14 +30,32 @@ public class PlayerControls : MonoBehaviour {
 		missed = 0;
 		killed = 0;
 		total = 100;
+
+		damage = 10f;
+		range = 100f;
+
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		percentage = (total-killed)/total;
 		cleanup ();
+
 		if (Input.GetKeyDown (KeyCode.Z))
 			switchWeapons ();
+
+		if (Input.GetKeyDown (KeyCode.X)) {
+			Shoot ();
+		}
+	}
+
+	void Shoot(){
+	
+		RaycastHit hit;
+		if (Physics.Raycast (fpsCam.transform.position, fpsCam.transform.forward, out hit, range)) {
+			Debug.Log (hit.transform.name);
+		}
+
 	}
 
 	void cleanup(){

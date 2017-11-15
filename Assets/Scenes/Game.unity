@@ -400,6 +400,9 @@ MonoBehaviour:
   weapon1: {fileID: 1966514460}
   weapon2: {fileID: 1527291376}
   weapon3: {fileID: 2133139317}
+  damage: 0
+  range: 0
+  fpsCam: {fileID: 1129880039}
 --- !u!1001 &1088645983
 Prefab:
   m_ObjectHideFlags: 0
@@ -534,6 +537,11 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 2}
   m_IsPrefabParent: 0
+--- !u!20 &1129880039 stripped
+Camera:
+  m_PrefabParentObject: {fileID: 2000000, guid: 5e9e851c0e142814dac026a256ba2ac0,
+    type: 2}
+  m_PrefabInternal: {fileID: 1129880038}
 --- !u!1 &1527291376
 GameObject:
   m_ObjectHideFlags: 0
