@@ -12,19 +12,46 @@ public class PlayerControls : MonoBehaviour {
 	static GameObject weaponTwo;
 	static GameObject weaponThree;
 
+	static float percentage;
+	static int total;
+	static int killed;
+	static int missed;
+
 	// Use this for initialization
 	void Start () {
 		weaponOne = weapon1;
 		weaponTwo = weapon2;
 		weaponThree = weapon3;
-		
+		percentage = 1;
+		missed = 0;
+		killed = 0;
+		total = 100;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-
+		percentage = (total-killed)/total;
+		cleanup ();
 		if (Input.GetKeyDown (KeyCode.Z))
 			switchWeapons ();
+	}
+
+	void cleanup(){
+		foreach(GameObject o in GameObject.FindGameObjectsWithTag("Bacteria")) {
+			if (o.transform.position.z < transform.position.z - 30)
+				missed++;
+				GameObject.Destroy (o);
+		}
+		foreach(GameObject o in GameObject.FindGameObjectsWithTag("Germ")) {
+			if (o.transform.position.z < transform.position.z - 30)
+				missed++;
+				GameObject.Destroy (o);
+		}
+		foreach(GameObject o in GameObject.FindGameObjectsWithTag("Metal")) {
+			if (o.transform.position.z < transform.position.z - 30)
+				missed++;
+				GameObject.Destroy (o);
+		}
 	}
 
 	void switchWeapons(){
