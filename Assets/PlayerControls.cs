@@ -60,19 +60,22 @@ public class PlayerControls : MonoBehaviour {
 
 	void cleanup(){
 		foreach(GameObject o in GameObject.FindGameObjectsWithTag("Bacteria")) {
-			if (o.transform.position.z < transform.position.z - 30)
+			if (o.transform.position.z < transform.position.z - 30) {
 				missed++;
 				GameObject.Destroy (o);
+			}
 		}
 		foreach(GameObject o in GameObject.FindGameObjectsWithTag("Germ")) {
-			if (o.transform.position.z < transform.position.z - 30)
+			if (o.transform.position.z < transform.position.z - 30) {
 				missed++;
 				GameObject.Destroy (o);
+			}
 		}
 		foreach(GameObject o in GameObject.FindGameObjectsWithTag("Metal")) {
-			if (o.transform.position.z < transform.position.z - 30)
+			if (o.transform.position.z < transform.position.z - 30) {
 				missed++;
 				GameObject.Destroy (o);
+			}
 		}
 	}
 
