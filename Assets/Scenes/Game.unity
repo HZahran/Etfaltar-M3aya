@@ -570,7 +570,7 @@ LineRenderer:
   m_GameObject: {fileID: 1237084523}
   m_Enabled: 1
   m_CastShadows: 1
-  m_ReceiveShadows: 1
+  m_ReceiveShadows: 0
   m_MotionVectors: 0
   m_LightProbeUsage: 0
   m_ReflectionProbeUsage: 0
@@ -606,7 +606,7 @@ LineRenderer:
       m_Curve:
       - serializedVersion: 2
         time: 0
-        value: 1
+        value: 0
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -649,7 +649,7 @@ LineRenderer:
       m_NumColorKeys: 2
       m_NumAlphaKeys: 2
     numCornerVertices: 20
-    numCapVertices: 10
+    numCapVertices: 20
     alignment: 0
     textureMode: 0
     generateLightingData: 0
