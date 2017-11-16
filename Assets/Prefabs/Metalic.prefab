@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 33351197272153804}
   - component: {fileID: 135737889517752702}
   - component: {fileID: 23831294018165576}
+  - component: {fileID: 114957161640588832}
   m_Layer: 0
   m_Name: Metalic
   m_TagString: Metal
@@ -81,6 +82,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1243930032352348}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &114957161640588832
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1243930032352348}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc04a103522fe724ea6e5283b86e8cf5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 10
 --- !u!135 &135737889517752702
 SphereCollider:
   m_ObjectHideFlags: 1

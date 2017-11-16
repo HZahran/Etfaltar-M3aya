@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 33292850001538760}
   - component: {fileID: 135939639063444370}
   - component: {fileID: 23943505327533586}
+  - component: {fileID: 114552217826679080}
   m_Layer: 0
   m_Name: Germ
   m_TagString: Germ
@@ -81,6 +82,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1633011321791208}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &114552217826679080
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1633011321791208}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc04a103522fe724ea6e5283b86e8cf5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 30
 --- !u!135 &135939639063444370
 SphereCollider:
   m_ObjectHideFlags: 1
