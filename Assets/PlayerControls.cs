@@ -32,7 +32,7 @@ public class PlayerControls : MonoBehaviour {
 		total = 100;
 
 		damage = 10f;
-		range = 100f;
+		range = 1000f;
 
 	}
 	
