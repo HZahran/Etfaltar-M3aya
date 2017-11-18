@@ -21,6 +21,8 @@ public class PlayerControls : MonoBehaviour {
 	public float range;
 	public Camera fpsCam;
 
+	Animator anim;
+
 	// Use this for initialization
 	void Start () {
 		weaponOne = weapon1;
@@ -34,6 +36,7 @@ public class PlayerControls : MonoBehaviour {
 		damage = 10f;
 		range = 1000f;
 
+		anim = GetComponent<Animator> ();
 	}
 	
 	// Update is called once per frame
@@ -60,6 +63,7 @@ public class PlayerControls : MonoBehaviour {
 			if (target != null && 
 				((hit.transform.CompareTag("Bacteria") && weapon1.activeInHierarchy) || (hit.transform.CompareTag("Germ") && weapon2.activeInHierarchy) || (hit.transform.CompareTag("Metal") && weapon3.activeInHierarchy))){
 					target.TakeDamage (damage);
+					
 			}
 		}
 
