@@ -55,7 +55,6 @@ public class PlayerControls : MonoBehaviour {
 		if (Physics.Raycast (fpsCam.transform.position, fpsCam.transform.forward, out hit, range)) {
 
 			Debug.Log (hit.transform.name);
-			Debug.DrawRay(transform.position, hit.point, Color.green);
 
 			Target target = hit.transform.GetComponent<Target> ();
 			if (target != null && 
