@@ -47,7 +47,7 @@ public class PlayerControls : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Z))
             switchWeapons();
 
-        if (Input.GetKeyDown(KeyCode.X))
+        if (Input.GetKeyDown(KeyCode.Mouse0))
         {
             Shoot();
         }
