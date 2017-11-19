@@ -23,7 +23,6 @@ public class PlayerControls : MonoBehaviour
 
     Animator anim;
 
-    // Use this for initialization
     void Start()
     {
         weaponOne = weapon1;
@@ -40,7 +39,6 @@ public class PlayerControls : MonoBehaviour
         anim = GetComponent<Animator>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         percentage = (total - killed) / total;
