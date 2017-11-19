@@ -387,6 +387,10 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1029672383 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 106988, guid: 15dec7b07032b2f4aa6f855bfbe120f7, type: 2}
+  m_PrefabInternal: {fileID: 1575060705}
 --- !u!1001 &1088645983
 Prefab:
   m_ObjectHideFlags: 0
@@ -541,6 +545,11 @@ Prefab:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114331684332170232, guid: 5e9e851c0e142814dac026a256ba2ac0,
+        type: 2}
+      propertyPath: lightningBolt
+      value: 
+      objectReference: {fileID: 1029672383}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 2}
   m_IsPrefabParent: 0
@@ -609,7 +618,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 106988, guid: 15dec7b07032b2f4aa6f855bfbe120f7, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 15dec7b07032b2f4aa6f855bfbe120f7, type: 2}

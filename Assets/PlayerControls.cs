@@ -7,6 +7,7 @@ public class PlayerControls : MonoBehaviour
     public GameObject weapon1;
     public GameObject weapon2;
     public GameObject weapon3;
+    public GameObject lightningBolt;
 
     static GameObject weaponOne;
     static GameObject weaponTwo;
@@ -37,13 +38,34 @@ public class PlayerControls : MonoBehaviour
         damage = 10f;
         range = 1000f;
 
-        //anim = GetComponent<Animator>();
+        anim = GetComponent<Animator>();
     }
 
     void Update()
     {
         percentage = (total - killed) / total; // FIXME: Throws exception when total = 0
         Cleanup();
+
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            weapon1.SetActive(true);
+            weapon2.SetActive(false);
+            weapon3.SetActive(false);
+        }
+
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            weapon1.SetActive(false);
+            weapon2.SetActive(true);
+            weapon3.SetActive(false);
+        }
+
+        if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            weapon1.SetActive(false);
+            weapon2.SetActive(false);
+            weapon3.SetActive(true);
+        }
 
         if (Input.GetKeyDown(KeyCode.Z)) {
             SwitchWeapons();
@@ -52,7 +74,18 @@ public class PlayerControls : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
             Shoot();
+
+            if (weapon3.activeInHierarchy) {
+                StartCoroutine(FireLightningBolt());
+            }
         }
+    }
+
+    IEnumerator FireLightningBolt()
+    {
+        lightningBolt.SetActive(true);
+        yield return new WaitForSeconds(0.5f);
+        lightningBolt.SetActive(false);
     }
 
     void Shoot()
