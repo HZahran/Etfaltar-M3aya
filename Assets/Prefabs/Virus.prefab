@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 23320388635736320}
   - component: {fileID: 114620693795227774}
   m_Layer: 0
-  m_Name: Bacteria
+  m_Name: Virus
   m_TagString: Bacteria
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
