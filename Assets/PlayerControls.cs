@@ -57,17 +57,9 @@ public class PlayerControls : MonoBehaviour
 
     void Shoot()
     {
-        Vector3 activeWeaponPosition = weapon1.transform.position;
-        Vector3 activeWeaponShootingDirection = -weapon1.transform.right;
-
-        if(weapon2.activeInHierarchy) {
-            activeWeaponPosition = weapon2.transform.position;
-            activeWeaponShootingDirection = weapon2.transform.forward;
-        }
-
         RaycastHit hit;
 
-        if (Physics.Raycast(activeWeaponPosition, activeWeaponShootingDirection, out hit, range))
+        if (Physics.Raycast(weapon1.transform.position, -weapon1.transform.right, out hit, range))
         {
             Target target = hit.transform.GetComponent<Target>();
 
