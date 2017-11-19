@@ -28,6 +28,7 @@ public class PlayerControls : MonoBehaviour
         weaponOne = weapon1;
         weaponTwo = weapon2;
         weaponThree = weapon3;
+
         percentage = 1;
         missed = 0;
         killed = 0;
@@ -36,16 +37,17 @@ public class PlayerControls : MonoBehaviour
         damage = 10f;
         range = 1000f;
 
-        anim = GetComponent<Animator>();
+        //anim = GetComponent<Animator>();
     }
 
     void Update()
     {
-        percentage = (total - killed) / total;
-        cleanup();
+        percentage = (total - killed) / total; // FIXME: Throws exception when total = 0
+        Cleanup();
 
-        if (Input.GetKeyDown(KeyCode.Z))
-            switchWeapons();
+        if (Input.GetKeyDown(KeyCode.Z)) {
+            SwitchWeapons();
+        }
 
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
@@ -55,24 +57,29 @@ public class PlayerControls : MonoBehaviour
 
     void Shoot()
     {
+        Vector3 activeWeaponPosition = weapon1.transform.position;
+        Vector3 activeWeaponShootingDirection = -weapon1.transform.right;
+
+        if(weapon2.activeInHierarchy) {
+            activeWeaponPosition = weapon2.transform.position;
+            activeWeaponShootingDirection = weapon2.transform.forward;
+        }
 
         RaycastHit hit;
-        if (Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out hit, range))
-        {
-            Debug.Log(hit.transform.name);
 
+        if (Physics.Raycast(activeWeaponPosition, activeWeaponShootingDirection, out hit, range))
+        {
             Target target = hit.transform.GetComponent<Target>();
+
             if (target != null &&
                 ((hit.transform.CompareTag("Bacteria") && weapon1.activeInHierarchy) || (hit.transform.CompareTag("Germ") && weapon2.activeInHierarchy) || (hit.transform.CompareTag("Metal") && weapon3.activeInHierarchy)))
             {
                 target.TakeDamage(damage);
-
             }
         }
-
     }
 
-    void cleanup()
+    void Cleanup()
     {
         foreach (GameObject o in GameObject.FindGameObjectsWithTag("Bacteria"))
         {
@@ -82,6 +89,7 @@ public class PlayerControls : MonoBehaviour
                 GameObject.Destroy(o);
             }
         }
+
         foreach (GameObject o in GameObject.FindGameObjectsWithTag("Germ"))
         {
             if (o.transform.position.z < transform.position.z - 30)
@@ -90,6 +98,7 @@ public class PlayerControls : MonoBehaviour
                 GameObject.Destroy(o);
             }
         }
+
         foreach (GameObject o in GameObject.FindGameObjectsWithTag("Metal"))
         {
             if (o.transform.position.z < transform.position.z - 30)
@@ -100,7 +109,7 @@ public class PlayerControls : MonoBehaviour
         }
     }
 
-    void switchWeapons()
+    void SwitchWeapons()
     {
         if (weapon1.activeInHierarchy)
         {
