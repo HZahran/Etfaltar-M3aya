@@ -1,22 +1,16 @@
 fileFormatVersion: 2
-guid: b63f65bd3912e49f584bec18e5fa1b13
-timeCreated: 1511096163
-licenseType: Free
+guid: 63f4a30f5731329418b381f3df766a4e
+timeCreated: 18446744011573954816
 ModelImporter:
   serializedVersion: 21
   fileIDToRecycleName:
-    100000: //RootNode
-    100002: silencer001
-    100004: weapon002
-    400000: //RootNode
-    400002: silencer001
-    400004: weapon002
-    2300000: silencer001
-    2300002: weapon002
-    3300000: silencer001
-    3300002: weapon002
-    4300000: silencer001
-    4300002: weapon002
+    4300000: cocking_grip
+    4300002: trigger
+    4300004: clip
+    4300006: scope_lense
+    4300008: front_grip
+    4300010: clip_release
+    4300012: body
   materials:
     importMaterials: 1
     materialName: 0
@@ -46,11 +40,11 @@ ModelImporter:
     lODScreenPercentages: []
     globalScale: 1
     meshCompression: 0
-    addColliders: 0
-    importVisibility: 1
+    addColliders: 1
+    importVisibility: 0
     importBlendShapes: 1
-    importCameras: 1
-    importLights: 1
+    importCameras: 0
+    importLights: 0
     swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1
@@ -61,12 +55,12 @@ ModelImporter:
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88
     secondaryUVPackMargin: 4
-    useFileScale: 1
+    useFileScale: 0
   tangentSpace:
     normalSmoothAngle: 60
     normalImportMode: 0
-    tangentImportMode: 3
-    normalCalculationMode: 4
+    tangentImportMode: 4
+    normalCalculationMode: 0
   importAnimation: 1
   copyAvatar: 0
   humanDescription:
@@ -86,7 +80,7 @@ ModelImporter:
     hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 0
+  animationType: 1
   humanoidOversampling: 1
   additionalBone: 0
   userData: 
