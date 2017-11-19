@@ -1,27 +1,30 @@
 ﻿using UnityEngine;
 
-public class Target : MonoBehaviour {
+public class Target : MonoBehaviour
+{
+    public float health = 50f;
 
-	public float health = 50f;
+    void Start()
+    {
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    }
 
-	public void TakeDamage(float amount){
-		health -= amount;
-		if (health <= 0f) {
-			Die ();
-		}
-	}
+    void Update()
+    {
 
-	void Die (){
-		Destroy (gameObject);
-	}
+    }
+
+    public void TakeDamage(float amount)
+    {
+        health -= amount;
+        if (health <= 0f)
+        {
+            Die();
+        }
+    }
+
+    void Die()
+    {
+        Destroy(gameObject);
+    }
 }
