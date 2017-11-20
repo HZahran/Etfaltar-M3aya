@@ -16,6 +16,7 @@ public class PlayerControls : MonoBehaviour
 	public AudioSource sounds;
 	AudioSource backgroundSound;
 	AudioSource thunderSound;
+	AudioSource laserSound;
 
     static float percentage;
     static int total;
@@ -36,6 +37,7 @@ public class PlayerControls : MonoBehaviour
 
 		backgroundSound = sounds.GetComponents<AudioSource> () [0];
 		thunderSound = sounds.GetComponents<AudioSource> () [1];
+		laserSound = sounds.GetComponents<AudioSource> () [2];
 
 		backgroundSound.Play ();
 
@@ -93,13 +95,19 @@ public class PlayerControls : MonoBehaviour
     IEnumerator FireLightningBolt()
     {
         lightningBolt.SetActive(true);
-		thunderSound.Play ();
         yield return new WaitForSeconds(0.5f);
         lightningBolt.SetActive(false);
     }
 
     void Shoot()
     {
+		if (weapon2.activeInHierarchy) {
+			laserSound.Play ();
+		}
+
+		if (weapon3.activeInHierarchy) {
+			thunderSound.Play ();
+		}
 
         RaycastHit hit;
 
