@@ -3243,6 +3243,7 @@ MonoBehaviour:
   weapon2: {fileID: 3127892}
   weapon3: {fileID: 108301173}
   lightningBolt: {fileID: 513983212}
+  sounds: {fileID: 1497985169}
   damage: 0
   range: 0
   fpsCam: {fileID: 1398355515}
@@ -4083,7 +4084,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: efc7d17a5ef1b76458da97d0b8af84e8, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 1

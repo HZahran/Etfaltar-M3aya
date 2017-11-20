@@ -13,6 +13,10 @@ public class PlayerControls : MonoBehaviour
     static GameObject weaponTwo;
     static GameObject weaponThree;
 
+	public AudioSource sounds;
+	AudioSource backgroundSound;
+	AudioSource thunderSound;
+
     static float percentage;
     static int total;
     static int killed;
@@ -30,10 +34,15 @@ public class PlayerControls : MonoBehaviour
         weaponTwo = weapon2;
         weaponThree = weapon3;
 
+		backgroundSound = sounds.GetComponents<AudioSource> () [0];
+		thunderSound = sounds.GetComponents<AudioSource> () [1];
+
+		backgroundSound.Play ();
+
         percentage = 1;
         missed = 0;
         killed = 0;
-        total = 100;
+        //total = 100;
 
         damage = 10f;
         range = 1000f;
@@ -43,7 +52,7 @@ public class PlayerControls : MonoBehaviour
 
     void Update()
     {
-        percentage = (total - killed) / total; // FIXME: Throws exception when total = 0
+        //percentage = (total - killed) / total; // FIXME: Throws exception when total = 0
         Cleanup();
 
         if (Input.GetKeyDown(KeyCode.Alpha1))
@@ -84,12 +93,14 @@ public class PlayerControls : MonoBehaviour
     IEnumerator FireLightningBolt()
     {
         lightningBolt.SetActive(true);
+		thunderSound.Play ();
         yield return new WaitForSeconds(0.5f);
         lightningBolt.SetActive(false);
     }
 
     void Shoot()
     {
+
         RaycastHit hit;
 
         if (Physics.Raycast(weapon1.transform.position, weapon1.transform.forward, out hit, range))
