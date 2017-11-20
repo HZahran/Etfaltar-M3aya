@@ -19,13 +19,12 @@ public class PlayerControls : MonoBehaviour
 	AudioSource laserSound;
 	AudioSource pistolSound;
 
-    static float percentage;
-    static int total;
-    static int killed;
-    static int missed;
+	public float purityPercentage;
+	static float total;
+	static float killed;
+	static float missed;
 
     public float damage;
-    public float range;
     public Camera fpsCam;
 
     Animator anim;
@@ -43,21 +42,18 @@ public class PlayerControls : MonoBehaviour
 
 		backgroundSound.Play ();
 
-        percentage = 1;
-        missed = 0;
-        killed = 0;
-        //total = 100;
+        purityPercentage = 0;
+		killed = 0;
+		missed = 0;
+		total = 100;
 
         damage = 10f;
-        range = 1000f;
 
         anim = GetComponent<Animator>();
     }
 
     void Update()
     {
-        //percentage = (total - killed) / total; // FIXME: Throws exception when total = 0
-        Cleanup();
 
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
@@ -117,46 +113,38 @@ public class PlayerControls : MonoBehaviour
 
         RaycastHit hit;
 
-        if (Physics.Raycast(weapon1.transform.position, weapon1.transform.forward, out hit, range))
+        if (Physics.Raycast(weapon1.transform.position, weapon1.transform.forward, out hit))
         {
             Target target = hit.transform.GetComponent<Target>();
 
             if (target != null &&
                 ((hit.transform.CompareTag("Bacteria") && weapon1.activeInHierarchy) || (hit.transform.CompareTag("Germ") && weapon2.activeInHierarchy) || weapon3.activeInHierarchy))
             {
+				killed++; 
                 target.TakeDamage(damage);
+				if (CheckWin ()) {
+					// winning situation
+				}
             }
         }
     }
 
-    void Cleanup()
+	bool CheckWin(){
+		purityPercentage = killed * 100 / total;
+		return purityPercentage >= 80;
+	}
+
+	static bool IsGameover(){
+		return (missed * 100 / total) >= 20;
+	}
+
+	static public void Cleanup(GameObject o)
     {
-        foreach (GameObject o in GameObject.FindGameObjectsWithTag("Bacteria"))
-        {
-            if (o.transform.position.z < transform.position.z - 30)
-            {
-                missed++;
-                GameObject.Destroy(o);
-            }
-        }
-
-        foreach (GameObject o in GameObject.FindGameObjectsWithTag("Germ"))
-        {
-            if (o.transform.position.z < transform.position.z - 30)
-            {
-                missed++;
-                GameObject.Destroy(o);
-            }
-        }
-
-        foreach (GameObject o in GameObject.FindGameObjectsWithTag("Metal"))
-        {
-            if (o.transform.position.z < transform.position.z - 30)
-            {
-                missed++;
-                GameObject.Destroy(o);
-            }
-        }
+		missed++;
+		GameObject.Destroy(o);
+		if (IsGameover ()) {
+			// losing sitiuation
+		}
     }
 
     void SwitchWeapons()

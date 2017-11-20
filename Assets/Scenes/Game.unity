@@ -2849,6 +2849,7 @@ GameObject:
   - component: {fileID: 920387595}
   - component: {fileID: 920387594}
   - component: {fileID: 920387593}
+  - component: {fileID: 920387596}
   m_Layer: 0
   m_Name: Start Wall
   m_TagString: Untagged
@@ -2922,6 +2923,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 920387591}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &920387596
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 920387591}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6102516a0c6e4ff49a7e4623ed233e8c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &923619946
 GameObject:
   m_ObjectHideFlags: 0
