@@ -13,8 +13,6 @@ public class PlayerControls : MonoBehaviour
     static GameObject weaponTwo;
     static GameObject weaponThree;
 
-	public AudioSource sounds;
-
     static float percentage;
     static int total;
     static int killed;
@@ -41,7 +39,6 @@ public class PlayerControls : MonoBehaviour
         range = 1000f;
 
         anim = GetComponent<Animator>();
-		sounds = GetComponent<AudioSource> ();
     }
 
     void Update()
@@ -103,8 +100,6 @@ public class PlayerControls : MonoBehaviour
                 ((hit.transform.CompareTag("Bacteria") && weapon1.activeInHierarchy) || (hit.transform.CompareTag("Germ") && weapon2.activeInHierarchy) || weapon3.activeInHierarchy))
             {
                 target.TakeDamage(damage);
-				AudioSource S = sounds [1];
-				S.Play ();
             }
         }
     }
