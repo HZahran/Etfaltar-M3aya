@@ -17,6 +17,7 @@ public class PlayerControls : MonoBehaviour
 	AudioSource backgroundSound;
 	AudioSource thunderSound;
 	AudioSource laserSound;
+	AudioSource pistolSound;
 
     static float percentage;
     static int total;
@@ -38,6 +39,7 @@ public class PlayerControls : MonoBehaviour
 		backgroundSound = sounds.GetComponents<AudioSource> () [0];
 		thunderSound = sounds.GetComponents<AudioSource> () [1];
 		laserSound = sounds.GetComponents<AudioSource> () [2];
+		pistolSound = sounds.GetComponents<AudioSource> () [3];
 
 		backgroundSound.Play ();
 
@@ -101,6 +103,10 @@ public class PlayerControls : MonoBehaviour
 
     void Shoot()
     {
+		if (weapon1.activeInHierarchy) {
+			pistolSound.Play ();
+		}
+
 		if (weapon2.activeInHierarchy) {
 			laserSound.Play ();
 		}
