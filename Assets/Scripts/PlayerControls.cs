@@ -19,6 +19,8 @@ public class PlayerControls : MonoBehaviour
 	AudioSource laserSound;
 	AudioSource pistolSound;
 
+	public ParticleSystem pistolMuzzleFlash;
+
 	public float purityPercentage;
 	static float total;
 	static float killed;
@@ -100,6 +102,7 @@ public class PlayerControls : MonoBehaviour
     void Shoot()
     {
 		if (weapon1.activeInHierarchy) {
+			pistolMuzzleFlash.Play ();
 			pistolSound.Play ();
 		}
 
