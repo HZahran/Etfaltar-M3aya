@@ -20,6 +20,7 @@ public class PlayerControls : MonoBehaviour
 	AudioSource pistolSound;
 
 	public ParticleSystem pistolMuzzleFlash;
+	public ParticleSystem rifleMuzzleFlash;
 
 	public float purityPercentage;
 	static float total;
@@ -107,6 +108,7 @@ public class PlayerControls : MonoBehaviour
 		}
 
 		if (weapon2.activeInHierarchy) {
+			rifleMuzzleFlash.Play ();
 			laserSound.Play ();
 		}
 
