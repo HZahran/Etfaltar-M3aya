@@ -266,6 +266,16 @@ Prefab:
       propertyPath: m_UseGravity
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114320490750555672, guid: f0cab181439d24a4ea4f5dd58bd2bca4,
+        type: 2}
+      propertyPath: m_IsWalking
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 54235931823552022, guid: f0cab181439d24a4ea4f5dd58bd2bca4,
+        type: 2}
+      propertyPath: m_IsKinematic
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f0cab181439d24a4ea4f5dd58bd2bca4, type: 2}
   m_IsPrefabParent: 0
