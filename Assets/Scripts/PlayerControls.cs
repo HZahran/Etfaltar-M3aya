@@ -92,7 +92,7 @@ public class PlayerControls : MonoBehaviour
     {
         RaycastHit hit;
 
-        if (Physics.Raycast(weapon1.transform.position, -weapon1.transform.right, out hit, range))
+        if (Physics.Raycast(weapon1.transform.position, weapon1.transform.forward, out hit, range))
         {
             Target target = hit.transform.GetComponent<Target>();
 

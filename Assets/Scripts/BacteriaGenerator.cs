@@ -30,7 +30,7 @@ public class BacteriaGenerator : MonoBehaviour {
         bacteria.Translate(posX, posY, 0);
 
         // Random scale
-        float scale = Random.Range(0.2f, 4.5f);
+        float scale = Random.Range(0.2f, 1.5f);
         bacteria.localScale = new Vector3(scale, scale, scale);
 
         // Add positional & rotational velocity
