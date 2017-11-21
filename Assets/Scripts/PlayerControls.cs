@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerControls : MonoBehaviour
 {
@@ -30,7 +31,9 @@ public class PlayerControls : MonoBehaviour
     public float damage;
     public Camera fpsCam;
 
-    Animator anim;
+	public Text percentageText;
+	public GameObject percentagecanvas;
+	public GameObject pausecanvas;
 
     void Start()
     {
@@ -50,9 +53,10 @@ public class PlayerControls : MonoBehaviour
 		missed = 0;
 		total = 100;
 
+		percentageText.text = "Purity Percentage: " + purityPercentage +" %";
+
         damage = 10f;
 
-        anim = GetComponent<Animator>();
     }
 
     void Update()
@@ -127,6 +131,7 @@ public class PlayerControls : MonoBehaviour
             {
 				killed++; 
                 target.TakeDamage(damage);
+				percentageText.text = "Purity Percentage: " + purityPercentage +" %";
 				if (CheckWin ()) {
 					// winning situation
 				}
