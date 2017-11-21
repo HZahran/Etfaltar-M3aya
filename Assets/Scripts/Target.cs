@@ -1,12 +1,14 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 public class Target : MonoBehaviour
 {
     public float health = 50f;
+    private Animator anim;
 
     void Start()
     {
-
+        anim = GetComponent<Animator>();
     }
 
     void Update()
@@ -19,12 +21,15 @@ public class Target : MonoBehaviour
         health -= amount;
         if (health <= 0f)
         {
-            Die();
+            StartCoroutine(Die());
         }
     }
 
-    void Die()
+    IEnumerator Die()
     {
+        anim.SetTrigger("die");
+        yield return new WaitForSeconds (anim.GetCurrentAnimatorClipInfo(0).Length);
+
         Destroy(gameObject);
     }
 }

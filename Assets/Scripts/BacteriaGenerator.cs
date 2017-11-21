@@ -35,7 +35,7 @@ public class BacteriaGenerator : MonoBehaviour {
 
         // Add positional & rotational velocity
         bacteria.GetComponent<Rigidbody>().velocity = new Vector3(0, 0, -speed);
-        bacteria.GetComponent<Rigidbody>().angularVelocity = new Vector3(speed, speed, 0);
+        //bacteria.GetComponent<Rigidbody>().angularVelocity = new Vector3(speed, speed, 0);
 
     }
 
