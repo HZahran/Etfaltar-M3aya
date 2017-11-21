@@ -34,6 +34,7 @@ public class PlayerControls : MonoBehaviour
 	public Text percentageText;
 	public GameObject percentagecanvas;
 	public GameObject pausecanvas;
+	public bool paused;
 
     void Start()
     {
@@ -56,12 +57,12 @@ public class PlayerControls : MonoBehaviour
 		percentageText.text = "Purity Percentage: " + purityPercentage +" %";
 
         damage = 10f;
+		paused = false;
 
     }
 
     void Update()
     {
-
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             weapon1.SetActive(true);
@@ -87,7 +88,7 @@ public class PlayerControls : MonoBehaviour
             SwitchWeapons();
         }
 
-        if (Input.GetKeyDown(KeyCode.Mouse0))
+		if (Input.GetKeyDown(KeyCode.Mouse0) && !paused)
         {
             Shoot();
 
@@ -95,6 +96,16 @@ public class PlayerControls : MonoBehaviour
                 StartCoroutine(FireLightningBolt());
             }
         }
+
+		if (Input.GetKeyDown (KeyCode.Escape)) {
+
+			if (pausecanvas.activeInHierarchy) 
+			{
+				ResumeGame();   
+			} else {
+				PauseGame();
+			}
+		}
     }
 
     IEnumerator FireLightningBolt()
@@ -138,6 +149,18 @@ public class PlayerControls : MonoBehaviour
             }
         }
     }
+
+	void PauseGame(){
+		Time.timeScale = 0;
+		paused = true;
+		pausecanvas.SetActive(true);
+	}
+
+	void ResumeGame(){
+		Time.timeScale = 1;
+		paused = false;
+		pausecanvas.SetActive(false);
+	}
 
 	bool CheckWin(){
 		purityPercentage = killed * 100 / total;
