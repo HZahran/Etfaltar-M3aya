@@ -7,6 +7,7 @@ public class ButtonManager_Main : MonoBehaviour {
 
 	public GameObject moreInfo, credits;
     private bool showMoreInfo = false;
+	private bool showCredits = false;
 
     public void StartGame()
     {
@@ -19,9 +20,19 @@ public class ButtonManager_Main : MonoBehaviour {
         moreInfo.SetActive(showMoreInfo);
     }
 
+	public void Credits()
+	{
+		showCredits = !showCredits;
+		credits.SetActive(showCredits);
+	}
+
     public void QuitGame()
     {
-        Application.Quit();
+		#if UNITY_EDITOR
+		UnityEditor.EditorApplication.isPlaying = false;
+		#else
+		Application.Quit ();
+		#endif
     }
 		
 }
