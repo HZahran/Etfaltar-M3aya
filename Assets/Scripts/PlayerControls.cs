@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerControls : MonoBehaviour
 {
@@ -22,7 +23,8 @@ public class PlayerControls : MonoBehaviour
 	public ParticleSystem pistolMuzzleFlash;
 	public ParticleSystem rifleMuzzleFlash;
 
-	public float purityPercentage;
+	static float impurityPercentage;
+	float purityPercentage;
 	static float total;
 	static float killed;
 	static float missed;
@@ -30,7 +32,12 @@ public class PlayerControls : MonoBehaviour
     public float damage;
     public Camera fpsCam;
 
-    Animator anim;
+	public Text impurityPercentageText;
+	static Text staticImpurityPercentageText;
+	public Text percentageText;
+	public GameObject percentagecanvas;
+	public GameObject pausecanvas;
+	public bool paused;
 
     void Start()
     {
@@ -45,19 +52,23 @@ public class PlayerControls : MonoBehaviour
 
 		backgroundSound.Play ();
 
+		impurityPercentage = 0;
         purityPercentage = 0;
 		killed = 0;
 		missed = 0;
 		total = 100;
 
-        damage = 10f;
+		staticImpurityPercentageText = impurityPercentageText;
+		staticImpurityPercentageText.text = "Percentage of Missed: " + impurityPercentage + " %";
+		percentageText.text = "Purity Percentage: " + purityPercentage +" %";
 
-        anim = GetComponent<Animator>();
+        damage = 10f;
+		paused = false;
+
     }
 
     void Update()
     {
-
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             weapon1.SetActive(true);
@@ -83,7 +94,7 @@ public class PlayerControls : MonoBehaviour
             SwitchWeapons();
         }
 
-        if (Input.GetKeyDown(KeyCode.Mouse0))
+		if (Input.GetKeyDown(KeyCode.Mouse0) && !paused)
         {
             Shoot();
 
@@ -91,6 +102,16 @@ public class PlayerControls : MonoBehaviour
                 StartCoroutine(FireLightningBolt());
             }
         }
+
+		if (Input.GetKeyDown (KeyCode.Escape)) {
+
+			if (pausecanvas.activeInHierarchy) 
+			{
+				ResumeGame();   
+			} else {
+				PauseGame();
+			}
+		}
     }
 
     IEnumerator FireLightningBolt()
@@ -125,8 +146,9 @@ public class PlayerControls : MonoBehaviour
             if (target != null &&
                 ((hit.transform.CompareTag("Bacteria") && weapon1.activeInHierarchy) || (hit.transform.CompareTag("Germ") && weapon2.activeInHierarchy) || weapon3.activeInHierarchy))
             {
-				killed++; 
-                target.TakeDamage(damage);
+				if (target.TakeDamage(damage))
+					killed++;
+				
 				if (CheckWin ()) {
 					// winning situation
 				}
@@ -134,13 +156,28 @@ public class PlayerControls : MonoBehaviour
         }
     }
 
+	void PauseGame(){
+		Time.timeScale = 0;
+		paused = true;
+		pausecanvas.SetActive(true);
+	}
+
+	void ResumeGame(){
+		Time.timeScale = 1;
+		paused = false;
+		pausecanvas.SetActive(false);
+	}
+
 	bool CheckWin(){
 		purityPercentage = killed * 100 / total;
+		percentageText.text = "Purity Percentage: " + purityPercentage +" %";
 		return purityPercentage >= 80;
 	}
 
 	static bool IsGameover(){
-		return (missed * 100 / total) >= 20;
+		impurityPercentage = missed * 100 / total;
+		staticImpurityPercentageText.text = "Percentage of Missed: " + impurityPercentage + " %";
+		return impurityPercentage >= 20;
 	}
 
 	static public void Cleanup(GameObject o)
