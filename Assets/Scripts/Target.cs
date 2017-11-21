@@ -19,6 +19,7 @@ public class Target : MonoBehaviour
     public void TakeDamage(float amount)
     {
         health -= amount;
+        anim.SetTrigger("hit");
         if (health <= 0f)
         {
             StartCoroutine(Die());
