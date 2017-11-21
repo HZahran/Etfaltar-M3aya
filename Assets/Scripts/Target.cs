@@ -30,7 +30,6 @@ public class Target : MonoBehaviour
     {
         anim.SetTrigger("die");
         yield return new WaitForSeconds (anim.GetCurrentAnimatorClipInfo(0).Length);
-
         Destroy(gameObject);
     }
 }
