@@ -23,7 +23,8 @@ public class PlayerControls : MonoBehaviour
 	public ParticleSystem pistolMuzzleFlash;
 	public ParticleSystem rifleMuzzleFlash;
 
-	public float purityPercentage;
+	static float impurityPercentage;
+	float purityPercentage;
 	static float total;
 	static float killed;
 	static float missed;
@@ -31,6 +32,8 @@ public class PlayerControls : MonoBehaviour
     public float damage;
     public Camera fpsCam;
 
+	public Text impurityPercentageText;
+	static Text staticImpurityPercentageText;
 	public Text percentageText;
 	public GameObject percentagecanvas;
 	public GameObject pausecanvas;
@@ -49,11 +52,14 @@ public class PlayerControls : MonoBehaviour
 
 		backgroundSound.Play ();
 
+		impurityPercentage = 0;
         purityPercentage = 0;
 		killed = 0;
 		missed = 0;
 		total = 100;
 
+		staticImpurityPercentageText = impurityPercentageText;
+		staticImpurityPercentageText.text = "Percentage of Missed: " + impurityPercentage + " %";
 		percentageText.text = "Purity Percentage: " + purityPercentage +" %";
 
         damage = 10f;
@@ -142,7 +148,6 @@ public class PlayerControls : MonoBehaviour
             {
 				killed++; 
                 target.TakeDamage(damage);
-				percentageText.text = "Purity Percentage: " + purityPercentage +" %";
 				if (CheckWin ()) {
 					// winning situation
 				}
@@ -164,11 +169,14 @@ public class PlayerControls : MonoBehaviour
 
 	bool CheckWin(){
 		purityPercentage = killed * 100 / total;
+		percentageText.text = "Purity Percentage: " + purityPercentage +" %";
 		return purityPercentage >= 80;
 	}
 
 	static bool IsGameover(){
-		return (missed * 100 / total) >= 20;
+		impurityPercentage = missed * 100 / total;
+		staticImpurityPercentageText.text = "Percentage of Missed: " + impurityPercentage + " %";
+		return impurityPercentage >= 20;
 	}
 
 	static public void Cleanup(GameObject o)
