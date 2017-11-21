@@ -103,7 +103,7 @@ public class PlayerControls : MonoBehaviour
             }
         }
 
-		if (Input.GetKeyDown (KeyCode.Escape)) {
+		if (Input.GetKeyDown (KeyCode.P)) {
 
 			if (pausecanvas.activeInHierarchy) 
 			{

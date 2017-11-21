@@ -3,14 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class ButtonManager : MonoBehaviour {
+public class ButtonManager_Main : MonoBehaviour {
 
-    public GameObject moreInfo,credits;
+	public GameObject moreInfo, credits;
     private bool showMoreInfo = false;
-	void Awake()
-    {
-        DontDestroyOnLoad(this);
-    }
 
     public void StartGame()
     {
@@ -27,4 +23,5 @@ public class ButtonManager : MonoBehaviour {
     {
         Application.Quit();
     }
+		
 }
