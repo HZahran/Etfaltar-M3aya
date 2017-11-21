@@ -146,8 +146,9 @@ public class PlayerControls : MonoBehaviour
             if (target != null &&
                 ((hit.transform.CompareTag("Bacteria") && weapon1.activeInHierarchy) || (hit.transform.CompareTag("Germ") && weapon2.activeInHierarchy) || weapon3.activeInHierarchy))
             {
-				killed++; 
-                target.TakeDamage(damage);
+				if (target.TakeDamage(damage))
+					killed++;
+				
 				if (CheckWin ()) {
 					// winning situation
 				}
