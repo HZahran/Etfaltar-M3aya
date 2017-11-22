@@ -4,8 +4,6 @@
 /[Bb]uild/
 /[Bb]uilds/
 /Assets/AssetStoreTools*
-/Exports/
-/MiniProject2_31-1997_31-2986_31-3725/
 
 # Visual Studio 2015 cache directory
 /.vs/
