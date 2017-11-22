@@ -195,7 +195,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 906090}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 327.5, y: 211, z: 0}
+  m_LocalPosition: {x: 327.5, y: 152, z: 0}
   m_LocalScale: {x: 0.81875, y: 0.81875, z: 0.81875}
   m_Children:
   - {fileID: 2017848419}
@@ -984,7 +984,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1041084717}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -35, z: 0}
+  m_LocalPosition: {x: 35, y: -35, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1767185229}
@@ -993,8 +993,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -35}
-  m_SizeDelta: {x: 0, y: -70}
+  m_AnchoredPosition: {x: 35, y: -35}
+  m_SizeDelta: {x: -70, y: -70}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1041084719
 MonoBehaviour:
@@ -1652,7 +1652,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 160, y: 300}
+  m_SizeDelta: {x: 248.54, y: 300}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1767185230
 MonoBehaviour:
@@ -1687,9 +1687,10 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: "Controls:\r\n\t- Movement: WASD\r\n\t- Shoot: Left Click\r\n\t- Change
-    Weapons: 1,2,3\n\nWeapons: Damage by 10\n\t-  1 -> Bacteria (2 Hits)\n\t-  2 ->
-    Germ (3 Hits)\n\t-  3 -> Any\n\nWin : If you purified more than 80%\nLose : If
-    you missed by max 20%"
+    Weapons: 1,2,3 or Z\n\t- Pause: P\n\nWeapons: Damage by 10\n\t-  Gun (Fires On
+    Click)-> Bacteria (2 Hits)\n\t-  2 (Fires every 0.5s) -> Germ (3 Hits)\n\t-  3
+    (Fires every 1.5s) -> Any\n\nWin : If you purified more than 80%\nLose : If you
+    missed by max 20%"
 --- !u!222 &1767185231
 CanvasRenderer:
   m_ObjectHideFlags: 0
