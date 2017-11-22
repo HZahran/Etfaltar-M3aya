@@ -37,9 +37,16 @@ public class PlayerControls : MonoBehaviour
 	public Text impurityPercentageText;
 	static Text staticImpurityPercentageText;
 	public Text percentageText;
+
+    // Pause Game
 	public GameObject percentagecanvas;
 	public GameObject pausecanvas;
-	public bool paused;
+    public bool paused;
+
+    // Fire Rate
+    public float fireDelay = 0.5f;
+    private bool shootAllowed = true;
+
 
     void Start()
     {
@@ -96,12 +103,22 @@ public class PlayerControls : MonoBehaviour
             SwitchWeapons();
         }
 
-		if (Input.GetKeyDown(KeyCode.Mouse0) && !paused)
+        if (Input.GetKeyDown(KeyCode.Mouse0) && !paused)
         {
-            Shoot();
+            // Allow only the gun to shoot with every click
+            if (weapon1.activeInHierarchy)
+            {
+                StartCoroutine(ShootContinous(false));
+            }
+        }
 
-            if (weapon3.activeInHierarchy) {
-                StartCoroutine(FireLightningBolt());
+        if (Input.GetKey(KeyCode.Mouse0) && !paused)
+        {
+            // Allow only weapons 2 & 3 to shoot continously
+            if (weapon2.activeInHierarchy || weapon3.activeInHierarchy)
+            {
+                if (shootAllowed)
+                    StartCoroutine(ShootContinous(true));
             }
         }
 
@@ -123,22 +140,8 @@ public class PlayerControls : MonoBehaviour
         lightningBolt.SetActive(false);
     }
 
-    void Shoot()
+    IEnumerator ShootContinous(bool block)
     {
-		if (weapon1.activeInHierarchy) {
-			pistolMuzzleFlash.Play ();
-			pistolSound.Play ();
-		}
-
-		if (weapon2.activeInHierarchy) {
-			rifleMuzzleFlash.Play ();
-			laserSound.Play ();
-		}
-
-		if (weapon3.activeInHierarchy) {
-			thunderSound.Play ();
-		}
-
         RaycastHit hit;
 
         if (Physics.Raycast(weapon1.transform.position, fpsCam.transform.forward, out hit))
@@ -157,6 +160,33 @@ public class PlayerControls : MonoBehaviour
                     SceneManager.LoadScene("Game Over");
                 }
             }
+        }
+
+        // Shooting Effects
+        if (weapon1.activeInHierarchy)
+        {
+            pistolMuzzleFlash.Play();
+            pistolSound.Play();
+        }
+
+        if (weapon2.activeInHierarchy)
+        {
+            rifleMuzzleFlash.Play();
+            laserSound.Play();
+        }
+
+        if (weapon3.activeInHierarchy)
+        {
+            thunderSound.Play();
+            StartCoroutine(FireLightningBolt());
+        }
+
+        // Block weapons 2 & 3 to fire with the firerate
+        if (block)
+        {
+            shootAllowed = false;
+            yield return new WaitForSeconds(fireDelay);
+            shootAllowed = true;
         }
     }
 
