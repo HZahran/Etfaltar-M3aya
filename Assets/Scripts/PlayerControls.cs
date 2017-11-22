@@ -58,7 +58,7 @@ public class PlayerControls : MonoBehaviour
         purityPercentage = 0;
 		killed = 0;
 		missed = 0;
-		total = 20;
+		total = 100;
 
 		staticImpurityPercentageText = impurityPercentageText;
 		staticImpurityPercentageText.text = "Percentage of Missed: " + impurityPercentage + " %";
@@ -141,7 +141,7 @@ public class PlayerControls : MonoBehaviour
 
         RaycastHit hit;
 
-        if (Physics.Raycast(weapon1.transform.position, weapon1.transform.forward, out hit))
+        if (Physics.Raycast(weapon1.transform.position, fpsCam.transform.forward, out hit))
         {
             Target target = hit.transform.GetComponent<Target>();
 
