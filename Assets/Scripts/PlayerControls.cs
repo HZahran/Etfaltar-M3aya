@@ -58,7 +58,7 @@ public class PlayerControls : MonoBehaviour
         purityPercentage = 0;
 		killed = 0;
 		missed = 0;
-		total = 10;
+		total = 100;
 
 		staticImpurityPercentageText = impurityPercentageText;
 		staticImpurityPercentageText.text = "Percentage of Missed: " + impurityPercentage + " %";
