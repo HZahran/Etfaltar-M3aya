@@ -1,6 +1,8 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class PlayerControls : MonoBehaviour
@@ -23,8 +25,8 @@ public class PlayerControls : MonoBehaviour
 	public ParticleSystem pistolMuzzleFlash;
 	public ParticleSystem rifleMuzzleFlash;
 
-	static float impurityPercentage;
-	float purityPercentage;
+	static int impurityPercentage;
+	static int purityPercentage;
 	static float total;
 	static float killed;
 	static float missed;
@@ -56,7 +58,7 @@ public class PlayerControls : MonoBehaviour
         purityPercentage = 0;
 		killed = 0;
 		missed = 0;
-		total = 100;
+		total = 20;
 
 		staticImpurityPercentageText = impurityPercentageText;
 		staticImpurityPercentageText.text = "Percentage of Missed: " + impurityPercentage + " %";
@@ -150,8 +152,10 @@ public class PlayerControls : MonoBehaviour
 					killed++;
 				
 				if (CheckWin ()) {
-					// winning situation
-				}
+                    // winning situation
+                    PlayerPrefs.SetInt("score", purityPercentage);
+                    SceneManager.LoadScene("Game Over");
+                }
             }
         }
     }
@@ -169,14 +173,14 @@ public class PlayerControls : MonoBehaviour
 	}
 
 	bool CheckWin(){
-		purityPercentage = killed * 100 / total;
+		purityPercentage = Convert.ToInt32(killed * 100 / total);
 		percentageText.text = "Purity Percentage: " + purityPercentage +" %";
 		return purityPercentage >= 80;
 	}
 
 	static bool IsGameover(){
-		impurityPercentage = missed * 100 / total;
-		staticImpurityPercentageText.text = "Percentage of Missed: " + impurityPercentage + " %";
+		impurityPercentage = Convert.ToInt32(missed * 100 / total);
+        staticImpurityPercentageText.text = "Percentage of Missed: " + impurityPercentage + " %";
 		return impurityPercentage >= 20;
 	}
 
@@ -185,7 +189,9 @@ public class PlayerControls : MonoBehaviour
 		missed++;
 		GameObject.Destroy(o);
 		if (IsGameover ()) {
-			// losing sitiuation
+            // losing situation
+            PlayerPrefs.SetInt("score", purityPercentage);
+            SceneManager.LoadScene("Game Over");
 		}
     }
 

@@ -5,8 +5,8 @@ using UnityEngine;
 public class BacteriaGenerator : MonoBehaviour {
 
     public Transform bacteriaPrefab;
-    public float speed = 5;
-    public float generationTime = 3;
+    public float speed;
+    public float generationTime;
 
 	// Use this for initialization
 	void Start () {

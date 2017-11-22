@@ -5,8 +5,8 @@ using UnityEngine;
 public class GermGenerator : MonoBehaviour {
 
 	public Transform germPrefab;
-	public float speed = 5;
-	public float generationTime = 3;
+	public float speed;
+	public float generationTime;
 
 	// Use this for initialization
 	void Start () {
@@ -34,7 +34,7 @@ public class GermGenerator : MonoBehaviour {
 
 		// Add positional & rotational velocity
 		germ.GetComponent<Rigidbody>().velocity = new Vector3(0, 0, -speed);
-		germ.GetComponent<Rigidbody>().angularVelocity = new Vector3(speed, speed, 0);
+		//germ.GetComponent<Rigidbody>().angularVelocity = new Vector3(speed, speed, 0);
 
 	}
 
@@ -43,6 +43,7 @@ public class GermGenerator : MonoBehaviour {
 	{
 		while (true)
 		{
+            Debug.Log(Time.time);
 			CreateGerm();
 			yield return new WaitForSeconds(waitTime);
 		}

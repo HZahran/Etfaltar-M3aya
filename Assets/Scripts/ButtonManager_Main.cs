@@ -18,13 +18,15 @@ public class ButtonManager_Main : MonoBehaviour {
     {
         showMoreInfo = !showMoreInfo;
         moreInfo.SetActive(showMoreInfo);
+        credits.SetActive(false);
     }
 
 	public void Credits()
 	{
 		showCredits = !showCredits;
 		credits.SetActive(showCredits);
-	}
+        moreInfo.SetActive(false);
+    }
 
     public void QuitGame()
     {
