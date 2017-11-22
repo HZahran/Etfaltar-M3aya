@@ -173,12 +173,14 @@ public class PlayerControls : MonoBehaviour
         {
             rifleMuzzleFlash.Play();
             laserSound.Play();
+            fireDelay = 0.5f;
         }
 
         if (weapon3.activeInHierarchy)
         {
             thunderSound.Play();
             StartCoroutine(FireLightningBolt());
+            fireDelay = 1.5f; // Thor's Weapon is slower
         }
 
         // Block weapons 2 & 3 to fire with the firerate
