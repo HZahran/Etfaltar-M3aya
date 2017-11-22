@@ -15,8 +15,7 @@ public class ButtonManager_Pause : MonoBehaviour {
 
 	public void Resume()
 	{
-		Time.timeScale = 1;
-		pausecanvas.SetActive(false);
+        GameObject.Find("Player").GetComponent<PlayerControls>().ResumeGame();
 	}
 
 }

@@ -8,6 +8,7 @@ public class GameOverText : MonoBehaviour
 
     void Start()
     {
+        Cursor.visible = true;
         GetComponent<Text>().text = "Purity Reached " + PlayerPrefs.GetInt("score") + " %";
     }
 }

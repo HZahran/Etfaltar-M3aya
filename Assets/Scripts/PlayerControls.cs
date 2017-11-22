@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityStandardAssets.Characters.FirstPerson;
 
 public class PlayerControls : MonoBehaviour
 {
@@ -58,7 +58,7 @@ public class PlayerControls : MonoBehaviour
         purityPercentage = 0;
 		killed = 0;
 		missed = 0;
-		total = 100;
+		total = 10;
 
 		staticImpurityPercentageText = impurityPercentageText;
 		staticImpurityPercentageText.text = "Percentage of Missed: " + impurityPercentage + " %";
@@ -162,20 +162,24 @@ public class PlayerControls : MonoBehaviour
 
 	void PauseGame(){
 		Time.timeScale = 0;
-		paused = true;
+        GetComponent<FirstPersonController>().enabled = false;
+        GetComponent<FirstPersonController>().m_MouseLook.SetCursorLock(false);
+        paused = true;
 		pausecanvas.SetActive(true);
-	}
+    }
 
-	void ResumeGame(){
+    public void ResumeGame(){
 		Time.timeScale = 1;
-		paused = false;
+        GetComponent<FirstPersonController>().enabled = true;
+        GetComponent<FirstPersonController>().m_MouseLook.SetCursorLock(true);
+        paused = false;
 		pausecanvas.SetActive(false);
-	}
+    }
 
-	bool CheckWin(){
+    bool CheckWin(){
 		purityPercentage = Convert.ToInt32(killed * 100 / total);
 		percentageText.text = "Purity Percentage: " + purityPercentage +" %";
-		return purityPercentage >= 80;
+		return purityPercentage >= 100;
 	}
 
 	static bool IsGameover(){
